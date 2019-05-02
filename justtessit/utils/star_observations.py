@@ -41,7 +41,7 @@ for i,j in enumerate(allStarList):
     if len(j) == 1:
         final_list[i].append('Not observed')
     else:
-        observationSpan = [allStarList[i][-1][0:16], ' ', allStarList[i][-1][-14:]]
+        observationSpan = [allStarList[i][1][0:16], ' ', allStarList[i][-1][-14:]]
         observationSpan = "".join(observationSpan)
         final_list[i].append(observationSpan)
 
