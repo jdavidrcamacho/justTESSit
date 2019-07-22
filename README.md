@@ -7,7 +7,7 @@ To install you just type
     python setup.py install
 
 
-And you can imported in python with
+And you can import it in python with
 
     import justtessit
 
