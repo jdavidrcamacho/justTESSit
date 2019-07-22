@@ -14,7 +14,6 @@ ra = np.array(ra)
 ra.reshape(ra.size)
 dec = np.array(dec)
 dec.reshape(dec.size)
-
 data = np.stack((ra, dec))
 data = data.T
 np.savetxt('star_coordinates.txt', data, 

@@ -12,6 +12,7 @@ setup(name='justessit',
       packages=['justtessit'],
       install_requires=[
         'numpy',
-        'astropy'
+        'astropy',
+        'tess-point'
       ],
      )
