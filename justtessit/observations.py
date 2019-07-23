@@ -14,9 +14,9 @@ def checkList(star_file, header = 0, savefile = True):
             savefile = True if we want a txt file with the schedule
     """
     #our stars
-    stars = np.loadtxt(star_file, skiprows=0, unpack=True, dtype='str')
+    stars = np.loadtxt(star_file, skiprows = header, unpack = True, dtype='str')
     #our coordinates
-    ra, dec = _checkListCoordinates(star_file, header=header)
+    ra, dec = _checkListCoordinates(star_file, header = header)
     #giving ids to the stars
     star_id = np.linspace(1, len(stars), len(stars))
     
