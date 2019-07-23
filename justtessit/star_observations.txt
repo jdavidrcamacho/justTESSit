@@ -1,5 +1,1 @@
-BD-082534	Observed from 2019-Feb-02 to 2019-Feb-28
-CD-571633	Observed from 2018-Aug-22 to 2019-Jul-18
-HD101612	Observed from 2019-Mar-26 to 2019-Apr-22
-HD101644	Observed from 2019-Feb-28 to 2019-Mar-26
-HD104800	Star not observed
+Glise581	Observed from 2020-Apr-15 to 2020-May-13
