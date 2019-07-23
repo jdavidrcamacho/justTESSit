@@ -34,8 +34,33 @@ def checkList(star_file, header = 0, savefile = True):
         observed_sectors.append(sector)
     
     #date of observation for each sector
-    sectors = np.loadtxt("utils/sectors.txt", skiprows=0, unpack=True, dtype='str')
-    sectors = sectors.T
+    sectors = [['1', '2018-Jul-25', '2018-Aug-22'], 
+                ['2', '2018-Aug-22', '2018-Sep-20'], 
+                ['3', '2018-Sep-20', '2018-Oct-18'], 
+                ['4', '2018-Oct-18', '2018-Nov-15'], 
+                ['5', '2018-Nov-15', '2018-Dec-11'], 
+                ['6', '2018-Dec-11', '2019-Jan-07'], 
+                ['7', '2019-Jan-07', '2019-Feb-02'], 
+                ['8', '2019-Feb-02', '2019-Feb-28'], 
+                ['9', '2019-Feb-28', '2019-Mar-26'], 
+                ['10', '2019-Mar-26', '2019-Apr-22'], 
+                ['11', '2019-Apr-22', '2019-May-21'], 
+                ['12', '2019-May-21', '2019-Jun-19'], 
+                ['13', '2019-Jun-19', '2019-Jul-18'], 
+                ['14', '2019-Jul-18', '2019-Aug-15'], 
+                ['15', '2019-Aug-15', '2019-Sep-11'], 
+                ['16', '2019-Sep-11', '2019-Oct-07'], 
+                ['17', '2019-Oct-07', '2019-Nov-02'], 
+                ['18', '2019-Nov-02', '2019-Nov-27'], 
+                ['19', '2019-Nov-27', '2019-Dec-24'], 
+                ['20', '2019-Dec-24', '2020-Jan-21'], 
+                ['21', '2020-Jan-21', '2020-Feb-18'], 
+                ['22', '2020-Feb-18', '2020-Mar-18'], 
+                ['23', '2020-Mar-18', '2020-Apr-15'], 
+                ['24', '2020-Apr-15', '2020-May-13'], 
+                ['25', '2020-May-13', '2020-Jun-08'], 
+                ['26', '2020-Jun-08', '2020-Jul-04']]
+
     
     #because I prefer the name of the start instead of RA and DEC
     allStarList = [[i] for i in stars]
@@ -43,8 +68,8 @@ def checkList(star_file, header = 0, savefile = True):
         if len(observed_sectors[i]) == 0:
             allStarList[i].append("Star not observed")
         else:
-            result = ["Observed from ", sectors[int(observed_sectors[i][0])-1,1], 
-                      " to ", sectors[int(observed_sectors[i][-1])-1, 2]]
+            result = ["Observed from ", sectors[int(observed_sectors[i][0])-1][1], 
+                      " to ", sectors[int(observed_sectors[i][-1])-1][2]]
             result = "".join(result)
             allStarList[i].append(result)
     
@@ -81,8 +106,32 @@ def checkStar(star, savefile = True):
         observed_sectors.append(sector)
     
     #date of observation for each sector
-    sectors = np.loadtxt("utils/sectors.txt", skiprows=0, unpack=True, dtype='str')
-    sectors = sectors.T
+    sectors = [['1', '2018-Jul-25', '2018-Aug-22'], 
+                ['2', '2018-Aug-22', '2018-Sep-20'], 
+                ['3', '2018-Sep-20', '2018-Oct-18'], 
+                ['4', '2018-Oct-18', '2018-Nov-15'], 
+                ['5', '2018-Nov-15', '2018-Dec-11'], 
+                ['6', '2018-Dec-11', '2019-Jan-07'], 
+                ['7', '2019-Jan-07', '2019-Feb-02'], 
+                ['8', '2019-Feb-02', '2019-Feb-28'], 
+                ['9', '2019-Feb-28', '2019-Mar-26'], 
+                ['10', '2019-Mar-26', '2019-Apr-22'], 
+                ['11', '2019-Apr-22', '2019-May-21'], 
+                ['12', '2019-May-21', '2019-Jun-19'], 
+                ['13', '2019-Jun-19', '2019-Jul-18'], 
+                ['14', '2019-Jul-18', '2019-Aug-15'], 
+                ['15', '2019-Aug-15', '2019-Sep-11'], 
+                ['16', '2019-Sep-11', '2019-Oct-07'], 
+                ['17', '2019-Oct-07', '2019-Nov-02'], 
+                ['18', '2019-Nov-02', '2019-Nov-27'], 
+                ['19', '2019-Nov-27', '2019-Dec-24'], 
+                ['20', '2019-Dec-24', '2020-Jan-21'], 
+                ['21', '2020-Jan-21', '2020-Feb-18'], 
+                ['22', '2020-Feb-18', '2020-Mar-18'], 
+                ['23', '2020-Mar-18', '2020-Apr-15'], 
+                ['24', '2020-Apr-15', '2020-May-13'], 
+                ['25', '2020-May-13', '2020-Jun-08'], 
+                ['26', '2020-Jun-08', '2020-Jul-04']]
     
     #because I prefer the name of the start instead of RA and DEC
     allStarList = [[i] for i in [star]]
@@ -90,8 +139,8 @@ def checkStar(star, savefile = True):
         if len(observed_sectors[i]) == 0:
             allStarList[i].append("Star not observed")
         else:
-            result = ["Observed from ", sectors[int(observed_sectors[i][0])-1,1], 
-                      " to ", sectors[int(observed_sectors[i][-1])-1, 2]]
+            result = ["Observed from ", sectors[int(observed_sectors[i][0])-1][1], 
+                      " to ", sectors[int(observed_sectors[i][-1])-1][2]]
             result = "".join(result)
             allStarList[i].append(result)
             
