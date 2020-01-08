@@ -12,7 +12,7 @@ env:
     # List package dependencies for conda
     - CONDA_DEPS="pytest numpy"
     # package name for test invocation
-    - PACKAGENAME="justessit"
+    - PACKAGENAME="justtessit"
 
 before_install:
 # Here we download miniconda and install the dependencies
@@ -32,5 +32,5 @@ install:
 - python setup.py install
 
 script:
-- python -c "import justessit"
+- python -c "import justtessit"
 
