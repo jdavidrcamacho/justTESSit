@@ -1,5 +1,6 @@
 <img align="center" src="https://i.imgur.com/biG64TD.png">
 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jdavidrcamacho/tedi/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/jdavidrcamacho/justTESSit.svg?branch=master)](https://travis-ci.org/jdavidrcamacho/justTESSit)
 
 Tiny package to check if a given star is going to be observed with the TESS 
