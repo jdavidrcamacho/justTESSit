@@ -1,5 +1,7 @@
 <img align="center" src="https://i.imgur.com/biG64TD.png">
 
+[![Build Status](https://travis-ci.org/jdavidrcamacho/justTESSit.svg?branch=master)](https://travis-ci.org/jdavidrcamacho/justTESSit)
+
 Tiny package to check if a given star is going to be observed with the TESS 
 space telescope.
 
