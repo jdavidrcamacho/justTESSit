@@ -19,12 +19,10 @@ def checkList(star_file, header = 0, savefile = True):
     ra, dec = _checkListCoordinates(star_file, header = header)
     #giving ids to the stars
     star_id = np.linspace(1, len(stars), len(stars))
-    
     #Lets see if TESS will look at it
     outID, outEclipLong, outEclipLat, \
     outSec, outCam, outCcd, \
     outColPix, outRowPix, scinfo = tess_stars2px_function_entry(star_id,ra,dec)
-    
     observed_sectors = []
     for i, j in enumerate(star_id):
         sector = []
@@ -32,7 +30,6 @@ def checkList(star_file, header = 0, savefile = True):
             if j==jj:
                 sector.append(outSec[ii])
         observed_sectors.append(sector)
-    
     #date of observation for each sector
     sectors = [['1', '2018-Jul-25', '2018-Aug-22'], 
                 ['2', '2018-Aug-22', '2018-Sep-20'], 
@@ -56,12 +53,23 @@ def checkList(star_file, header = 0, savefile = True):
                 ['20', '2019-Dec-24', '2020-Jan-21'], 
                 ['21', '2020-Jan-21', '2020-Feb-18'], 
                 ['22', '2020-Feb-18', '2020-Mar-18'], 
-                ['23', '2020-Mar-18', '2020-Apr-15'], 
-                ['24', '2020-Apr-15', '2020-May-13'], 
+                ['23', '2020-Mar-18', '2020-Apr-16'], 
+                ['24', '2020-Apr-16', '2020-May-13'], 
                 ['25', '2020-May-13', '2020-Jun-08'], 
-                ['26', '2020-Jun-08', '2020-Jul-04']]
-
-    
+                ['26', '2020-Jun-08', '2020-Jul-04'],
+                ['27', '2020-Jul-04', '2020-Jul-30'], 
+                ['28', '2020-Jul-30', '2020-Aug-26'], 
+                ['29', '2020-Aug-26', '2020-Sep-22'], 
+                ['30', '2020-Sep-22', '2020-Oct-21'], 
+                ['31', '2020-Oct-21', '2020-Nov-19'], 
+                ['32', '2020-Nov-19', '2020-Dec-17'], 
+                ['33', '2020-Dec-17', '2021-Jan-13'], 
+                ['34', '2021-Jan-13', '2021-Feb-09'], 
+                ['35', '2021-Feb-09', '2021-Mar-07'], 
+                ['36', '2021-Mar-07', '2021-Apr-02'], 
+                ['37', '2021-Apr-02', '2021-Apr-28'], 
+                ['38', '2021-Apr-28', '2021-May-26'], 
+                ['39', '2021-May-26', '2021-Jun-24']]
     #because I prefer the name of the start instead of RA and DEC
     allStarList = [[i] for i in stars]
     for i, j in enumerate(stars):
@@ -72,13 +80,13 @@ def checkList(star_file, header = 0, savefile = True):
                       " to ", sectors[int(observed_sectors[i][-1])-1][2]]
             result = "".join(result)
             allStarList[i].append(result)
-    
     #now a final list with start and end observations
     data = np.array(allStarList)
     if savefile:
-        np.savetxt('star_observations.txt', data, 
-                   delimiter='\t', comments='', fmt='%s')
+        np.savetxt('star_observations.txt', data, delimiter='\t', 
+                   comments='', fmt='%s')
     return data
+
 
 def checkStar(star, savefile = True):
     """
@@ -91,12 +99,10 @@ def checkStar(star, savefile = True):
     ra, dec = _checkStarCoordinates(star)
     #giving ids to the stars
     star_id = [1]
-    
     #Lets see if TESS will look at it
     outID, outEclipLong, outEclipLat, \
     outSec, outCam, outCcd, \
     outColPix, outRowPix, scinfo = tess_stars2px_function_entry(star_id,ra,dec)
-    
     observed_sectors = []
     for i, j in enumerate(star_id):
         sector = []
@@ -104,7 +110,6 @@ def checkStar(star, savefile = True):
             if j==jj:
                 sector.append(outSec[ii])
         observed_sectors.append(sector)
-    
     #date of observation for each sector
     sectors = [['1', '2018-Jul-25', '2018-Aug-22'], 
                 ['2', '2018-Aug-22', '2018-Sep-20'], 
@@ -128,11 +133,23 @@ def checkStar(star, savefile = True):
                 ['20', '2019-Dec-24', '2020-Jan-21'], 
                 ['21', '2020-Jan-21', '2020-Feb-18'], 
                 ['22', '2020-Feb-18', '2020-Mar-18'], 
-                ['23', '2020-Mar-18', '2020-Apr-15'], 
-                ['24', '2020-Apr-15', '2020-May-13'], 
+                ['23', '2020-Mar-18', '2020-Apr-16'], 
+                ['24', '2020-Apr-16', '2020-May-13'], 
                 ['25', '2020-May-13', '2020-Jun-08'], 
-                ['26', '2020-Jun-08', '2020-Jul-04']]
-    
+                ['26', '2020-Jun-08', '2020-Jul-04'],
+                ['27', '2020-Jul-04', '2020-Jul-30'], 
+                ['28', '2020-Jul-30', '2020-Aug-26'], 
+                ['29', '2020-Aug-26', '2020-Sep-22'], 
+                ['30', '2020-Sep-22', '2020-Oct-21'], 
+                ['31', '2020-Oct-21', '2020-Nov-19'], 
+                ['32', '2020-Nov-19', '2020-Dec-17'], 
+                ['33', '2020-Dec-17', '2021-Jan-13'], 
+                ['34', '2021-Jan-13', '2021-Feb-09'], 
+                ['35', '2021-Feb-09', '2021-Mar-07'], 
+                ['36', '2021-Mar-07', '2021-Apr-02'], 
+                ['37', '2021-Apr-02', '2021-Apr-28'], 
+                ['38', '2021-Apr-28', '2021-May-26'], 
+                ['39', '2021-May-26', '2021-Jun-24']]
     #because I prefer the name of the start instead of RA and DEC
     allStarList = [[i] for i in [star]]
     for i, j in enumerate([star]):
@@ -143,11 +160,10 @@ def checkStar(star, savefile = True):
                       " to ", sectors[int(observed_sectors[i][-1])-1][2]]
             result = "".join(result)
             allStarList[i].append(result)
-            
     #now a final list with start and end observations
     data = np.array(allStarList)
-    np.savetxt('star_observations.txt', data, 
-               delimiter='\t', comments='', fmt='%s')
+    np.savetxt('star_observations.txt', data, delimiter='\t', 
+               comments='', fmt='%s')
     return data
 
 
@@ -170,6 +186,7 @@ def _checkListCoordinates(star_file, header = 0):
     dec = np.array(dec)
     dec.reshape(dec.size)
     return ra, dec
+
 
 def _checkStarCoordinates(star):
     """

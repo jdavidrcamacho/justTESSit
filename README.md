@@ -1,6 +1,7 @@
-<img align="center" src="https://i.imgur.com/n2Imtm5.png">
+<img align="center" src="https://i.imgur.com/biG64TD.png">
 
-Package to check if a given star is going to be observed with TESS
+Tiny package to check if a given star is going to be observed with the TESS 
+space telescope.
 
 To install you just type
 
@@ -14,4 +15,4 @@ And you can import it in python with
 
 
 -------------------------
-2019 [João Camacho](https://github.com/jdavidrcamacho)
+2019-2020 [João Camacho](https://github.com/jdavidrcamacho)
