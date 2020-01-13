@@ -46,59 +46,6 @@ sectors = [['1', '2018-Jul-25', '2018-Aug-22'],
             ['39', '2021-May-26', '2021-Jun-24']]
 
 
-def checkList(star_file, header = 0, savefile = True):
-    """
-    Returns the TESS observations for a given list of stars
-    
-    Parameters
-    ----------
-    star_file: str
-        File with the list of stars
-    header: int
-        Number of lines used as header
-    savefile: bool
-        True if we want a txt file with the schedule
-        
-    Returns
-    -------
-    data: array
-        Observation schedule of the given stars
-    """
-    #our stars
-    stars = np.loadtxt(star_file, skiprows = header, unpack = True, dtype='str')
-    #our coordinates
-    ra, dec = _checkListCoordinates(star_file, header = header)
-    #giving ids to the stars
-    star_id = np.linspace(1, len(stars), len(stars))
-    #Lets see if TESS will look at it
-    outID, outEclipLong, outEclipLat, \
-    outSec, outCam, outCcd, \
-    outColPix, outRowPix, scinfo = tess_stars2px_function_entry(star_id,ra,dec)
-    observed_sectors = []
-    for i, j in enumerate(star_id):
-        sector = []
-        for ii, jj in enumerate(outID):
-            if j==jj:
-                sector.append(outSec[ii])
-        observed_sectors.append(sector)
-    #because I prefer the name of the start instead of RA and DEC
-    allStarList = [[i] for i in stars]
-    for i, j in enumerate(stars):
-        if len(observed_sectors[i]) == 0:
-            allStarList[i].append("Star not observed")
-        else:
-            result = ["Observed from ", sectors[int(observed_sectors[i][0])-1][1], 
-                      " to ", sectors[int(observed_sectors[i][-1])-1][2]]
-            result = "".join(result)
-            allStarList[i].append(result)
-    #now a final list with start and end observations
-    data = np.array(allStarList)
-    if savefile:
-        np.savetxt('star_observations.txt', data, delimiter='\t', 
-                   comments='', fmt='%s')
-    return data
-
-
 def checkStar(star, savefile = True):
     """
     Returns the a file with TESS observations for a given star
@@ -134,18 +81,52 @@ def checkStar(star, savefile = True):
     allStarList = [[i] for i in [star]]
     for i, j in enumerate([star]):
         if len(observed_sectors[i]) == 0:
-            allStarList[i].append("Star not observed")
+            allStarList[i].append(" Star not observed")
         else:
             for ii, jj in enumerate(observed_sectors[0]):
-                result = ["Observed in sector {0}: ".format(jj), 
+                result = [" Observed in sector {0}: ".format(jj), 
                           sectors[int(observed_sectors[0][ii])-1][1], " to ",
                           sectors[int(observed_sectors[0][ii])-1][2]]
                 result = "".join(result)
                 allStarList[i].append(result)
     #now a final list with start and end observations
     data = np.squeeze(np.array(allStarList))
-    np.savetxt('star_observations.txt', data, delimiter='\t', newline='\r\n',
-               comments='', fmt='%s')
+    if savefile:
+        np.savetxt('star_observations.txt', data, delimiter='\t', newline='\r\n',
+                   comments='', fmt='%s')
+    return data
+
+
+def checkList(star_file, header = 0, savefile = True):
+    """
+    Returns the TESS observations for a given list of stars
+    
+    Parameters
+    ----------
+    star_file: str
+        File with the list of stars
+    header: int
+        Number of lines used as header
+    savefile: bool
+        True if we want a txt file with the schedule
+        
+    Returns
+    -------
+    data: array
+        Observation schedule of the given stars
+    """
+    #our stars
+    stars = np.loadtxt(star_file, skiprows = header, 
+                       unpack = True, dtype='str')
+    #lets check them one by one
+    results = []
+    for i,j in enumerate(stars):
+        result = "\n".join(checkStar(j))
+        results.append(result)
+    data = np.squeeze(np.array(results))
+    if savefile:
+        np.savetxt('star_observations.txt', data, delimiter='\t', newline='\r\n',
+                   comments='', fmt='%s')
     return data
 
 

@@ -3,8 +3,8 @@
 from setuptools import setup
 
 setup(name='justtessit',
-      version='0.1',
-      description='Tiny script to see if a given star is going to be observed with TESS',
+      version='0.2',
+      description='A tiny package to see if a given star is going to be observed with TESS',
       author='João Camacho',
       author_email='joao.camacho@astro.up.pt',
       license='MIT',

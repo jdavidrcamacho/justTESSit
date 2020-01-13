@@ -10,6 +10,7 @@ results = checkList(example_file)
 
 #and print our final results
 print(results)
+#yes they will look ugly, I made this thinking in save everything in a txt
 
 #We can also check a individual star with checkStar
 result = checkStar('Glise581')
